@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Roll | Blendit Barbershop</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --red: #E63946;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--black); color: var(--white); overflow-x: hidden; }
+
+        /* --- PREVIOUS NAVBAR REPLICA --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 2000; background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(230, 57, 70, 0.2); backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 3px; }
+        .logo span { color: var(--red); }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: white; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a:hover { color: var(--red); }
+        
+        .lang-switch select {
+            background: black; color: white; border: 1px solid var(--red);
+            padding: 5px 10px; cursor: pointer; font-weight: 600;
+        }
+
+        /* --- HERO BACKGROUND --- */
+        .gallery-hero {
+            height: 45vh; width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
+                        url('/images/photo-1585747860715-2ba37e788b70.jpeg') center/cover no-repeat;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding-top: 80px;
+        }
+        .gallery-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; letter-spacing: 8px; text-transform: uppercase; }
+        .red-line { width: 80px; height: 4px; background: var(--red); margin-top: 15px; }
+
+        /* --- PHOTO ROLL SLIDER --- */
+        .slider-section {
+            position: relative;
+            padding: 80px 0;
+            background: var(--black);
+            overflow: hidden;
+        }
+
+        .photo-roll-container {
+            display: flex;
+            gap: 20px;
+            padding: 0 8%;
+            overflow-x: scroll;
+            scroll-behavior: smooth;
+            scrollbar-width: none; 
+        }
+
+        .photo-roll-container::-webkit-scrollbar { display: none; }
+
+        .photo-item {
+            flex: 0 0 380px;
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .photo-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .photo-item:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        /* Navigation Controls */
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .nav-btn {
+            width: 65px; height: 65px;
+            border: 2px solid var(--red);
+            color: var(--red);
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; font-size: 1.4rem;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        .nav-btn:hover {
+            background: var(--red);
+            color: white;
+            box-shadow: 0 0 25px rgba(230, 57, 70, 0.4);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .photo-item { flex: 0 0 300px; height: 450px; }
+            .gallery-hero { height: 40vh; }
+        }
+
+        .rtl { direction: rtl; }
+    </style>
+</head>
+<body id="main-body">
+
+    <nav>
+        <div class="logo">BLEND<span>IT</span></div>
+        <ul class="nav-links">
+            <li><a href="/index.html" id="n-home">Home</a></li>
+            <li><a href="/aboutus.html" id="n-services">About Us</a></li>
+            <li><a href="/service.html" id="n-services">Services</a></li>
+            <li><a href="/contact.html" id="n-gallery">Contact</a></li>
+        </ul>
+        <div class="lang-switch">
+            <select id="langBtn" onchange="changeLanguage()">
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+                <option value="hi">HI</option>
+            </select>
+        </div>
+    </nav>
+
+    <header class="gallery-hero">
+        <h1 id="h-title">OUR MASTERPIECES</h1>
+        <div class="red-line"></div>
+    </header>
+
+    <main class="slider-section">
+        <div class="photo-roll-container" id="roll">
+            <div class="photo-item"><img src="/images/11-1-12.jpg" alt="Work 1"></div>
+            <div class="photo-item"><img src="/images/Asymmetrical-Crew-Cut.jpg" alt="Work 2"></div>
+            <div class="photo-item"><img src="/images/create_a_beautiful_man_with_a_winter_haircut_like.jpg" alt="Work 3"></div>
+            <div class="photo-item"><img src="/images/Crew-Cut-with-Textured-Quiff-673x1024.jpg" alt="Work 4"></div>
+            <div class="photo-item"><img src="/images/download.webp" alt="Work 5"></div>
+            <div class="photo-item"><img src="images/Faux-Hawk-Crew-Cut-673x1024.jpg" alt="Work 6"></div>
+            <div class="photo-item"><img src="/images/HairstylesForHeartShapedFaceMaleLongquiff.webp" alt="Work 7"></div>
+            <div class="photo-item"><img src="/images/Layered-Pompadour-Style.webp" alt="Work 8"></div>
+        </div>
+
+        <div class="slider-controls">
+            <div class="nav-btn" onclick="moveRoll(-400)"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="nav-btn" onclick="moveRoll(400)"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </main>
+
+    <script>
+        // Smooth Roll Logic
+        function moveRoll(distance) {
+            const container = document.getElementById('roll');
+            container.scrollBy({ left: distance, behavior: 'smooth' });
+        }
+
+        // Language Logic
+        const langData = {
+            en: { hT: "OUR MASTERPIECES", n1: "Home", n2: "Services", n3: "Gallery", dir: "ltr" },
+            ar: { hT: "روائعنا", n1: "الرئيسية", n2: "الخدمات", n3: "المعرض", dir: "rtl" },
+            hi: { hT: "हमारी उत्कृष्ट कृतियाँ", n1: "होम", n2: "सेवाएं", n3: "गैलरी", dir: "ltr" }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('langBtn').value;
+            const d = langData[lang];
+            document.getElementById('h-title').innerText = d.hT;
+            document.getElementById('n-home').innerText = d.n1;
+            document.getElementById('n-services').innerText = d.n2;
+            document.getElementById('n-gallery').innerText = d.n3;
+            document.getElementById('main-body').className = d.dir === "rtl" ? "rtl" : "";
+        }
+    </script>
+</body>
+</html>

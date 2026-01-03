@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blendit Barbershop | Our Masters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --red: #E63946;
+            --black: #0A0A0A;
+            --dark-grey: #121212;
+            --white: #F5F5F5;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--black); color: var(--white); scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* NAVBAR (Əvvəlki stildə) */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 2000; background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(230, 57, 70, 0.2); backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.6rem; font-weight: 900; letter-spacing: 3px; }
+        .logo span { color: var(--red); }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--white); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+
+        /* HERO */
+        .hero {
+            height: 80vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            url('/images/photo-1585747860715-2ba37e788b70.jpeg') center/cover;
+        }
+
+        /* ABOUT SECTION */
+        .about-section { padding: 100px 8%; text-align: center; background: var(--black); }
+        .about-section h2 { font-size: 2.5rem; color: var(--red); margin-bottom: 20px; font-weight: 900; }
+        .about-section p { max-width: 800px; margin: 0 auto 60px; line-height: 1.8; color: #ccc; }
+
+        /* TEAM GRID */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .barber-card {
+            background: var(--dark-grey);
+            padding: 20px;
+            border-radius: 5px;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .barber-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 3px solid var(--red);
+            box-shadow: 0 10px 30px rgba(230, 57, 70, 0.1);
+        }
+
+        .barber-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+        .barber-card:hover .barber-img { filter: grayscale(0%); }
+
+        .barber-card h3 { font-size: 1.2rem; margin-bottom: 5px; letter-spacing: 1px; }
+        .barber-card span { color: var(--red); font-size: 0.8rem; text-transform: uppercase; font-weight: 700; }
+
+        /* FOOTER MAP */
+        .map-container { width: 100%; height: 400px; filter: grayscale(1) invert(0.9); }
+        
+        /* Language Direction */
+        .rtl { direction: rtl; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BLEND<span>IT</span></div>
+        <ul class="nav-links">
+            <li><a href="/index.html" id="nav-home">Home</a></li>
+            <li><a href="/services.html" id="nav-about">Services</a></li>
+            <li><a href="/gallery.html" id="nav-about">Gallery</a></li>
+            <li><a href="/contact.html" id="nav-contact">Contact</a></li>
+           
+        </ul>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <select id="langBtn" onchange="changeLanguage()" style="background:transparent; color:white; border:1px solid var(--red); padding:5px;">
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+                <option value="hi">HI</option>
+            </select>
+            <i class="fa-solid fa-calendar-check" style="color:var(--red); font-size:1.4rem;"></i>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1 id="hero-title">THE MASTERS OF BLEND</h1>
+        <p id="hero-sub">Stoney Creek's Finest Barbers</p>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2 id="about-title">ABOUT BLENDIT</h2>
+        <p id="about-text">At Blendit Barbershop, we blend tradition with modern style. Our team of professionals is dedicated to giving you the sharpest look in Ontario.</p>
+        
+        <div class="team-grid">
+            <div class="barber-card">
+                <img src="https://images.unsplash.com/photo-1618077360395-f3068be8e001?q=80&w=500" class="barber-img" alt="Barber">
+                <h3 id="b1-name">MARCO "THE BLEND"</h3>
+                <span id="b1-role">Master Barber / Founder</span>
+            </div>
+            <div class="barber-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=500" class="barber-img" alt="Barber">
+                <h3 id="b2-name">DAVID SHARP</h3>
+                <span id="b2-role">Fade Specialist</span>
+            </div>
+            <div class="barber-card">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=500" class="barber-img" alt="Barber">
+                <h3 id="b3-name">SAMIR KHAN</h3>
+                <span id="b3-role">Beard Architect</span>
+            </div>
+            <div class="barber-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=500" class="barber-img" alt="Barber">
+                <h3 id="b4-name">LEO VINCENZO</h3>
+                <span id="b4-role">Classic Stylist</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="map-container">
+        <iframe src="http://googleusercontent.com/maps.google.com/3" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                home: "Home", about: "About Us", contact: "Contact",
+                hTitle: "THE MASTERS OF BLEND", hSub: "Stoney Creek's Finest Barbers",
+                aTitle: "ABOUT BLENDIT", aText: "At Blendit Barbershop, we blend tradition with modern style. Our team of professionals is dedicated to giving you the sharpest look in Ontario.",
+                b1n: "MARCO 'THE BLEND'", b1r: "Master Barber / Founder",
+                b2n: "DAVID SHARP", b2r: "Fade Specialist",
+                b3n: "SAMIR KHAN", b3r: "Beard Architect",
+                b4n: "LEO VINCENZO", b4r: "Classic Stylist", dir: "ltr"
+            },
+            ar: {
+                home: "الرئيسية", about: "من نحن", contact: "اتصل بنا",
+                hTitle: "أسياد الحلاقة", hSub: "أفضل الحلاقين في ستوني كريك",
+                aTitle: "حول بليند ات", aText: "في بليند ات، نمزج بين التقاليد والأسلوب الحديث. فريقنا مكرس لمنحك المظهر الأكثر حدة في أونتاريو.",
+                b1n: "ماركو 'بليند'", b1r: "حلاق رئيسي / مؤسس",
+                b2n: "ديفيد شارب", b2r: "خبير التلاشي",
+                b3n: "سمير خان", b3r: "مهندس اللحية",
+                b4n: "ليو فينسينزو", b4r: "مصفف كلاسيكي", dir: "rtl"
+            },
+            hi: {
+                home: "होम", about: "हमारे बारे में", contact: "संपर्क",
+                hTitle: "ब्लेंड के उस्ताद", hSub: "स्टोनी क्रीक के बेहतरीन नाई",
+                aTitle: "ब्लेंडिट के बारे में", aText: "ब्लेंडिट में, हम परंपरा को आधुनिक शैली के साथ मिलाते हैं। हमारी टीम आपको ओंटारियो में सबसे बेहतरीन लुक देने के लिए समर्पित है।",
+                b1n: "मार्को 'ब्लेंड'", b1r: "मास्टर नाई / संस्थापक",
+                b2n: "डेविड शार्प", b2r: "फेड विशेषज्ञ",
+                b3n: "समीर खान", b3r: "दाढ़ी विशेषज्ञ",
+                b4n: "लियो विन्सेन्ज़ो", b4r: "क्लासिक स्टाइलिस्ट", dir: "ltr"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('langBtn').value;
+            const d = translations[lang];
+
+            document.getElementById('nav-home').innerText = d.home;
+            document.getElementById('nav-about').innerText = d.about;
+            document.getElementById('nav-contact').innerText = d.contact;
+            document.getElementById('hero-title').innerText = d.hTitle;
+            document.getElementById('hero-sub').innerText = d.hSub;
+            document.getElementById('about-title').innerText = d.aTitle;
+            document.getElementById('about-text').innerText = d.aText;
+            
+            document.getElementById('b1-name').innerText = d.b1n; document.getElementById('b1-role').innerText = d.b1r;
+            document.getElementById('b2-name').innerText = d.b2n; document.getElementById('b2-role').innerText = d.b2r;
+            document.getElementById('b3-name').innerText = d.b3n; document.getElementById('b3-role').innerText = d.b3r;
+            document.getElementById('b4-name').innerText = d.b4n; document.getElementById('b4-role').innerText = d.b4r;
+
+            document.body.className = d.dir === "rtl" ? "rtl" : "";
+        }
+    </script>
+</body>
+</html>

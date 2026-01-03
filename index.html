@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blendit Barbershop | Stoney Creek</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --red: #E63946;
+            --black: #0A0A0A;
+            --dark-grey: #121212;
+            --white: #F5F5F5;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--black); color: var(--white); scroll-behavior: smooth; overflow-x: hidden; }
+
+        /* --- PROFESSIONAL NAVBAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2000;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(230, 57, 70, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 900; letter-spacing: 3px; cursor: pointer; }
+        .logo span { color: var(--red); }
+
+        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+        .nav-links a:hover { color: var(--red); opacity: 1; }
+
+        .nav-right { display: flex; align-items: center; gap: 25px; }
+
+        .lang-switch select {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid var(--red);
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            outline: none;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* Arxa plan şəkli dəyişdirilmədi */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('/images/photo-1585747860715-2ba37e788b70.jpeg') center/cover;
+            padding: 0 5%;
+        }
+
+        .hero h1 { font-size: clamp(3rem, 10vw, 6rem); font-weight: 900; line-height: 1.1; margin-bottom: 40px; }
+        .hero p { font-size: 1.1rem; color: #bbb; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 60px; }
+
+        .btn-premium {
+            padding: 20px 50px;
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: var(--transition);
+            border: 1px solid var(--red);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+        .btn-premium:hover { background: transparent; box-shadow: 0 0 30px rgba(230, 57, 70, 0.4); }
+
+        /* --- FOOTER MAP SECTION --- */
+        .footer-cta { padding: 120px 0 0 0; text-align: center; background: var(--black); }
+        .footer-cta h2 { font-size: 3rem; font-weight: 900; margin-bottom: 60px; letter-spacing: -1px; }
+
+        .map-container {
+            width: 100%;
+            height: 500px;
+            filter: grayscale(1) invert(0.92) contrast(1.2);
+        }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        /* RTL Support */
+        .rtl { direction: rtl; }
+        .rtl .nav-links { flex-direction: row-reverse; }
+        .rtl .btn-premium i { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">BLEND<span>IT</span></div>
+        
+        <ul class="nav-links" id="nav-menu">
+            <li><a href="/aboutus.html" id="nav-about">About Us</a></li>
+            <li><a href="/services.html" id="nav-services">Services</a></li>
+            <li><a href="/gallery.html" id="nav-gallery">Gallery</a></li>
+            <li><a href="/contact.html" id="nav-contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <div class="lang-switch">
+                <select id="langBtn" onchange="changeLanguage()">
+                    <option value="en">English</option>
+                    <option value="ar">العربية</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
+            <a href="/booking.html" id="book-icon" title="Claim Your Spot">
+                <i class="fa-solid fa-calendar-check" style="color: var(--red); font-size: 1.4rem;"></i>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1 id="hero-title">MASTERFUL<br>TRADITION</h1>
+        <p id="hero-sub">Where Precision Meets Luxury</p>
+        <a href="/booking.html" class="btn-premium" id="hero-btn">
+            CLAIM YOUR SPOT <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+    </section>
+
+    <section class="footer-cta" id="contact">
+        <h2 id="cta-title">READY FOR A FRESH LOOK?</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.544714154483!2d-79.76560052341255!3d43.21901618039396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882c996616428741%3A0xc39f99762df283f5!2s931%20Queenston%20Rd%2C%20Stoney%20Creek%2C%20ON%20L8G%201B8!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <script>
+        const translations = {
+            en: {
+                about: "About Us", services: "Services", gallery: "Gallery", contact: "Contact",
+                heroTitle: "MASTERFUL<br>TRADITION", heroSub: "Where Precision Meets Luxury",
+                heroBtn: "CLAIM YOUR SPOT", ctaTitle: "READY FOR A FRESH LOOK?", dir: "ltr"
+            },
+            ar: {
+                about: "حولنا", services: "خدماتنا", gallery: "معرضنا", contact: "اتصل بنا",
+                heroTitle: "تقاليد<br>احترافية", heroSub: "حيث تلتقي الدقة بالفخامة",
+                heroBtn: "احجز مكانك", ctaTitle: "جاهز لمظهر جديد؟", dir: "rtl"
+            },
+            hi: {
+                about: "हमारे बारे में", services: "सेवाएं", gallery: "गैलरी", contact: "संपर्क करें",
+                heroTitle: "महारत भरी<br>परंपरा", heroSub: "जहाँ सटीकता विलासिता से मिलती है",
+                heroBtn: "अपनी जगह सुरक्षित करें", ctaTitle: "नया लुक पाने के लिए तैयार हैं?", dir: "ltr"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById('langBtn').value;
+            const data = translations[lang];
+
+            document.getElementById('nav-about').innerText = data.about;
+            document.getElementById('nav-services').innerText = data.services;
+            document.getElementById('nav-gallery').innerText = data.gallery;
+            document.getElementById('nav-contact').innerText = data.contact;
+            document.getElementById('hero-title').innerHTML = data.heroTitle;
+            document.getElementById('hero-sub').innerText = data.heroSub;
+            document.getElementById('hero-btn').innerHTML = `${data.heroBtn} <i class="fa-solid fa-arrow-right-long"></i>`;
+            document.getElementById('cta-title').innerText = data.ctaTitle;
+
+            document.body.className = data.dir === "rtl" ? "rtl" : "";
+        }
+    </script>
+</body>
+</html>
